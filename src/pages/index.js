@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
 import DigiCard from "@/components/card";
+import Header from "@/components/header";
 
 export default function Home() {
 	const [allDigimon, setAllDigimon] = useState(null);
@@ -19,8 +20,11 @@ export default function Home() {
 		getAllDigimon();
 	}, []);
 	return (
-		<div className="p-8 md:p-16">
-			<div className="grid grid-flow-row grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-4">{allDigimon && allDigimon.map(({ img, name, level }) => <DigiCard img={img} name={name} level={level} />)}</div>
-		</div>
+		<>
+			<Header />
+			<div className="p-8 md:p-16">
+				<div className="grid grid-flow-row grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-4">{allDigimon && allDigimon.map(({ img, name, level }) => <DigiCard img={img} name={name} level={level} />)}</div>
+			</div>
+		</>
 	);
 }
